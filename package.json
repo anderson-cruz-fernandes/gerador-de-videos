@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/anderson-cruz-fernandes/gerador-de-videos/issues"
   },
-  "homepage": "https://github.com/anderson-cruz-fernandes/gerador-de-videos#readme"
+  "homepage": "https://github.com/anderson-cruz-fernandes/gerador-de-videos#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
