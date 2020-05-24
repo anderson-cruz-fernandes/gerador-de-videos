@@ -1,0 +1,22 @@
+{
+  "name": "gerador-de-videos",
+  "version": "1.0.0",
+  "description": "Projeto open source para fazer vídeos automaticados",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anderson-cruz-fernandes/gerador-de-videos.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anderson-cruz-fernandes/gerador-de-videos/issues"
+  },
+  "homepage": "https://github.com/anderson-cruz-fernandes/gerador-de-videos#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
