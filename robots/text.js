@@ -15,12 +15,18 @@ const naturalLanguageUnderstanding = new NaturalLanguageUnderstandingV1({
   url: 'https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/17d8997c-702e-407b-bdce-e7c89fed5c46',
 })
 
-async function robot(content) {
+const state = require('./state.js')
+
+async function robot() {
+    const content = state.load()
+
     await fetchContentFromWikipedia(content)
     sanitizeContent(content)
     breakContentIntoSentences(content)
     limitMaximumSentences(content)
     await fetchKeywordsOfAllSentences(content)
+
+    state.save(content)
 }
 
 async function fetchContentFromWikipedia(content) {
@@ -69,12 +75,12 @@ function breakContentIntoSentences(content) {
     })
 }
 
-function LimitMaximumSentences(content) {
+function limitMaximumSentences(content) {
     content.sentences = content.sentences.slice(0, content.maximumSentences)
 }
 
 async function fetchKeywordsOfAllSentences(content) {
-    for (const setence of content.sentences) {
+    for (const sentence of content.sentences) {
         sentence.keywords = await fetchWatsonAndReturnKeywords(sentence.text)
     }
 }
@@ -91,7 +97,7 @@ async function fetchWatsonAndReturnKeywords(sentence) {
                 throw error
             }
             
-            const keywords = response.keywords.map((keyword) => { 
+            const keywords = response.result.keywords.map((keyword) => { 
                 return keyword.text
             })
 
